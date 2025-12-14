@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Student</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #d6eaf8, #f4f6f7);
+    }
+
+    header {
+        background: linear-gradient(to right, #2E86C1, #1B4F72);
+        padding: 25px;
+        text-align: center;
+        color: white;
+        box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+
+    .form-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    form {
+        background: white;
+        width: 700px;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    }
+
+    label {
+        font-weight: bold;
+        color: #2E4053;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: 0.2s;
+    }
+
+    input:focus {
+        border-color: #2E86C1;
+        box-shadow: 0 0 5px rgba(46,134,193,0.5);
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #2E86C1;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #1A5276;
+    }
+
+    /* Horizontal layout */
+    .row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .row .field {
+        flex: 1 1 45%; /* Two fields per row */
+    }
+
+    h3 {
+        color: #2E86C1;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Update Student Details</h1>
+</header>
+
+<section class="form-wrapper">
+<form action="/updatedData" method="post">
+
+    <input type="hidden" name="id" value="<%= result._id %>">
+
+    <!-- First Row -->
+    <div class="row">
+        <div class="field">
+            <label>Roll No</label>
+            <input type="number" name="RollNo" value="<%= result.RollNo %>" required>
+        </div>
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="name" value="<%= result.name %>" required>
+        </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row">
+        <div class="field">
+            <label>Class</label>
+            <input type="text" name="class" value="<%= result.class %>" required>
+        </div>
+        <div class="field">
+            <label>Age</label>
+            <input type="number" name="Age" value="<%= result.Age %>" required>
+        </div>
+    </div>
+
+    <!-- Third Row -->
+    <div class="row">
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" value="<%= result.email %>" required>
+        </div>
+        <div class="field">
+            <label>Attendance %</label>
+            <input type="number" name="attendance" value="<%= result.attendance %>" min="0" max="100" required>
+        </div>
+    </div>
+
+    <!-- Marks Section -->
+    <h3>Subject Marks</h3>
+
+    <div class="row">
+        <div class="field">
+            <label>Science</label>
+            <input type="number" name="science" value="<%= result.marks.science %>">
+        </div>
+        <div class="field">
+            <label>English</label>
+            <input type="number" name="english" value="<%= result.marks.english %>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="field">
+            <label>Marathi</label>
+            <input type="number" name="marathi" value="<%= result.marks.marathi %>">
+        </div>
+        <div class="field">
+            <label>Hindi</label>
+            <input type="number" name="hindi" value="<%= result.marks.hindi %>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="field">
+            <label>Maths</label>
+            <input type="number" name="maths" value="<%= result.marks.maths %>">
+        </div>
+        <div class="field">
+            <label>Sanskrit</label>
+            <input type="number" name="sanskrit" value="<%= result.marks.sanskrit %>">
+        </div>
+    </div>
+
+    <button type="submit">Update Student</button>
+
+</form>
+</section>
+
+</body>
+</html>

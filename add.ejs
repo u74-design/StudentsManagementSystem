@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Students</title>
+ 
+
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; background:#f4f6f7;">
+
+    <!-- Header -->
+    <header style="background:#2E86C1; padding:20px; text-align:center; color:white;">
+        <h1 style="margin:0;">Add New Student</h1>
+    </header>
+
+    <!-- Form Container -->
+    <section style="display:flex; justify-content:center; align-items:center; margin-top:40px;">
+        <form action="/submit" method="post" style="
+            background:white; 
+            padding:30px; 
+            width:450px; 
+            border-radius:10px; 
+            box-shadow:0 0 10px rgba(0,0,0,0.2);">
+
+            <!-- Basic Details -->
+            <label>Roll No</label><br>  
+            <input type="number" name="RollNo" required
+                style="width:100%; padding:8px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Name</label><br>
+            <input type="text" name="name" required
+                style="width:100%; padding:8px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Class</label><br>
+            <input type="text" name="class" required
+                style="width:100%; padding:8px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Age</label><br>
+            <input type="number" name="Age" required
+                style="width:100%; padding:8px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Email</label><br>
+            <input type="email" name="email" required
+                style="width:100%; padding:8px; margin:5px 0 25px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+
+            <!-- Attendance -->
+            <label>Attendance Percentage</label><br>
+            <input type="number" name="attendance" min="0" max="100" required
+                style="width:100%; padding:8px; margin:5px 0 25px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+
+            <!-- Marks Section -->
+            <h3 style="margin-top:20px; color:#2E86C1;">Subject Marks</h3>
+
+            <label>Science</label><br>
+            <input type="number" name="science"
+                style="width:100%; padding:8px; margin:5px 0 10px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>English</label><br>
+            <input type="number" name="english"
+                style="width:100%; padding:8px; margin:5px 0 10px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Marathi</label><br>
+            <input type="number" name="marathi"
+                style="width:100%; padding:8px; margin:5px 0 10px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Hindi</label><br>
+            <input type="number" name="hindi"
+                style="width:100%; padding:8px; margin:5px 0 10px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Maths</label><br>
+            <input type="number" name="maths"
+                style="width:100%; padding:8px; margin:5px 0 10px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+            <label>Sanskrit</label><br>
+            <input type="number" name="sanskrit"
+                style="width:100%; padding:8px; margin:5px 0 25px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+
+            <!-- Submit Button -->
+            <button type="submit"
+                style="width:100%; padding:10px; background:#2E86C1; color:white; border:none; border-radius:5px; font-size:16px; cursor:pointer;">
+                Add Student
+            </button>
+        </form>
+    </section>
+
+</body>
+</html>

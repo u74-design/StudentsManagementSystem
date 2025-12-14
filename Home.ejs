@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Dashboard</title>
+
+
+<style>
+
+    body{
+        margin:0;
+        font-family:Arial, sans-serif;
+        background:#f0f4f8;
+    }
+
+    header{
+        background:linear-gradient(135deg,#2E86C1,#1F618D);
+        color:white;
+        text-align:center;
+        padding:28px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.25);
+    }
+
+    header h1{
+        margin:0;
+        font-size:34px;
+    }
+
+    header p{
+        margin:6px 0 0;
+        font-size:16px;
+        opacity:.9;
+    }
+
+    .container{
+        width:92%;
+        max-width:1200px;
+        margin:30px auto;
+        background:white;
+        padding:25px;
+        border-radius:12px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.10);
+    }
+
+    /* =================== TOP ROW =================== */
+    .top-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:22px;
+        background:white;
+        padding:14px 22px;
+        border-radius:10px;
+        margin-bottom:22px;
+        border:1px solid rgba(0,0,0,0.07);
+        box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .welcome{
+        margin-right:auto;
+        font-size:19px;
+        font-weight:bold;
+        color:#0b3c5d;
+    }
+
+    .btn{
+        padding:10px 22px;
+        border:none;
+        border-radius:10px;
+        color:white;
+        font-size:15px;
+        cursor:pointer;
+        font-weight:600;
+        transition:.3s;
+    }
+
+    .login{ background:#3f51b5; }
+    .login:hover{ background:#2e3b8b; }
+
+    .add{ background:#28B463; }
+    .add:hover{ background:#1e8d4a; }
+
+
+    /* ================= SEARCH BAR ================== */
+    .search-box{
+        display:flex;
+        gap:0;
+        align-items:center;
+        width:100%;
+        max-width:500px;
+        background:white;
+        border-radius:10px;
+        margin-bottom:28px;
+        border:1.5px solid #d0d7e2;
+        overflow:hidden;
+        box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .search-box input{
+        flex:1;
+        padding:12px 15px;
+        font-size:16px;
+        border:none;
+        outline:none;
+    }
+
+    .search-box button{
+        padding:12px 22px;
+        background:#2980b9;
+        color:white;
+        border:none;
+        font-size:15px;
+        font-weight:bold;
+        cursor:pointer;
+        transition:.3s;
+    }
+
+    .search-box button:hover{
+        background:#1f5e87;
+    }
+
+
+    /* ================= TABLE =================== */
+    table{
+        width:100%;
+        border-collapse:collapse;
+        overflow:hidden;
+        border-radius:10px;
+    }
+
+    th{
+        background:#154360;
+        color:white;
+        padding:12px;
+        font-size:16px;
+        text-align:left;
+    }
+
+    td{
+        padding:12px;
+        background:#EBF5FB;
+        font-size:15px;
+    }
+
+    tr:nth-child(even) td{
+        background:#D6EAF8;
+    }
+
+    tr:hover td{
+        background:#AED6F1;
+        transition:.2s;
+    }
+
+    .delete-btn{ background:#E74C3C; }
+    .delete-btn:hover{ background:#c0392b; }
+
+    .update-btn{ background:#27AE60; }
+    .update-btn:hover{ background:#1e8449; }
+
+    .detail-btn{ background:#2E86C1; }
+    .detail-btn:hover{ background:#1a5d8d; }
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Students Dashboard</h1>
+    <p>Manage Students • View • Update • Delete</p>
+</header>
+
+
+<div class="container">
+    <div class="top-row">
+        <p class="welcome">Welcome <b><%= name  %></b></p>
+
+        <form action="/">
+            <button class="btn login">Logout</button>
+        </form>
+
+        <form action="/add">
+            <button class="btn add">+ Add Student</button>
+        </form>
+    </div>
+
+
+    <!-- SEARCH BAR (Alone) -->
+    <form action="/search" method="get" class="search-box">
+        <input type="text" name="search" placeholder="🔍 Search Roll Number">
+        <button type="submit">Search</button>
+    </form>
+
+
+    <!-- STUDENT TABLE -->
+    <table>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Operations</th>
+        </tr>
+
+        <% for(let i=0; i<result.length; i++){ %>
+        <tr>
+            <td><%= result[i].RollNo %></td>
+            <td><%= result[i].name %></td>
+            <td><%= result[i].class %></td>
+            <td><%= result[i].Age %></td>
+            <td><%= result[i].email %></td>
+
+            <td>
+                <form action="/delete/<%= result[i]._id %>" method="post" style="display:inline;">
+                    <button class="btn delete-btn">Delete</button>
+                </form>
+
+                <form action="/update/<%= result[i]._id %>" method="post" style="display:inline;">
+                    <button class="btn update-btn">Update</button>
+                </form>
+
+                <form action="/detail/<%= result[i]._id %>" method="post" style="display:inline;">
+                    <button class="btn detail-btn">Details</button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+
+</div>
+
+</body>
+</html>

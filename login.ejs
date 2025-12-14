@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Portal</title>
+
+<style>
+    body{
+        margin:0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg,#81ecec,#6c5ce7);
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .container{
+        background:white;
+        width:420px;
+        padding:35px;
+        border-radius:15px;
+        box-shadow:0 10px 35px rgba(0,0,0,0.2);
+        text-align:center;
+    }
+
+    h2{
+        color:#2d3436;
+        margin-bottom:25px;
+    }
+
+    .circle-box{
+        display:flex;
+        justify-content:space-around;
+        margin-bottom:30px;
+    }
+
+    .circle{
+        width:110px;
+        height:110px;
+        background:#dfe6e9;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:18px;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.3s;
+        border:4px solid transparent;
+        user-select:none;
+    }
+
+    .circle:hover{
+        transform:scale(1.08);
+        border-color:#6c5ce7;
+    }
+
+    form{
+        display:none;
+        margin-top:10px;
+        text-align:left;
+    }
+
+    input{
+        width:100%;
+        padding:10px 12px;
+        margin:8px 0;
+        border:1px solid gray;
+        border-radius:8px;
+    }
+
+    button{
+        width:100%;
+        padding:10px;
+        background:#6c5ce7;
+        border:none;
+        color:white;
+        font-size:17px;
+        font-weight:bold;
+        border-radius:8px;
+        cursor:pointer;
+        margin-top:10px;
+    }
+</style>
+
+<script>
+function showForm(type){
+    document.getElementById("teacherForm").style.display = "none";
+    document.getElementById("studentForm").style.display = "none";
+
+    document.getElementById(type+"Form").style.display = "block";
+}
+</script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login Portal</h2>
+
+    <div class="circle-box">
+        <div class="circle" onclick="showForm('teacher')">Teacher</div>
+        <div class="circle" onclick="showForm('student')">Student</div>
+    </div>
+
+    <!-- Teacher Login -->
+    <form id="teacherForm" action="/submitted" method="post">
+        <h3>Teacher Login</h3>
+        <label>Username</label>
+        <input type="text" name="Username" required>
+
+        <label>Password</label>
+        <input type="Password" name="Password" required>
+        <button type="submit">Login as Teacher</button>
+    </form>
+
+    <!-- Student Login -->
+    <form id="studentForm" action="/student" method="GET">
+        <h3>Student Login</h3>
+        <label>Roll Number</label>
+        <input type="text" name="RollNo" required>
+
+        <button type="submit">View Student Details</button>
+    </form>
+</div>
+
+</body>
+</html>
